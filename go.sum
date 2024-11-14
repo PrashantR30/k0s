@@ -353,6 +353,8 @@ github.com/json-iterator/go v1.1.12/go.mod h1:e30LSqwooZae/UwlEbR2852Gd8hjQvJoHm
 github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
 github.com/k0sproject/bootloose v0.7.2 h1:K3IRlP8WSBWuNqT7SN/L6nw3rYY+aMpfqylOQ2tksf4=
 github.com/k0sproject/bootloose v0.7.2/go.mod h1:BwIRhmv1ioCQsOeTa6qeSlBFzu5OTpINP9BIjVAXjEc=
+github.com/k0sproject/bootloose v0.7.3 h1:KfiKSGsVN67Sa8bdmwUXMrEnytTaEifOXUf6EEDBycg=
+github.com/k0sproject/bootloose v0.7.3/go.mod h1:L2kSTF+MhWICJVjorLdr8BG+Y8dUxegm4IEocSHIuDk=
 github.com/k0sproject/dig v0.2.0 h1:cNxEIl96g9kqSMfPSZLhpnZ0P8bWXKv08nxvsMHop5w=
 github.com/k0sproject/dig v0.2.0/go.mod h1:rBcqaQlJpcKdt2x/OE/lPvhGU50u/e95CSm5g/r4s78=
 github.com/k0sproject/version v0.6.0 h1:Wi8wu9j+H36+okIQA47o/YHbzNpKeIYj8IjGdJOdqsI=
