@@ -1,150 +1,34 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "onboarding": true,
   "platform": "github",
+  "extends": ["config:base"],
+  "labels": ["version_bump"],
   "forkProcessing": "enabled",
+  "semanticCommits": "enabled",
+  "dependencyDashboard": true,
+  "onboarding": true,
+  "automerge": false,
+  "separateMinorPatch": true,
   "prConcurrentLimit": 20,
   "prHourlyLimit": 20,
-  "dependencyDashboard": true,
-  "semanticCommits": "enabled",
-  "automerge": false,
-  "labels": [
-    "dependencies"
-  ],
-  "extends": [
-    "config:base",
-    "config:recommended"
-  ],
-  "separateMinorPatch": true,
   "dockerfile": {
     "enabled": false
   },
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "Makefile.variables"
-      ],
-      "matchStrings": [
-        "kubernetes_version\\s*=\\s*(?<currentValue>\\S+)"
-      ],
-      "depNameTemplate": "kubernetes",
-      "versioningTemplate": "semver-coerced",
-      "datasourceTemplate": "custom.kubernetes"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": [
-        "Makefile.variables"
-      ],
-      "matchStrings": [
-        "helm_version\\s*=\\s*(?<currentValue>\\S+)"
-      ],
-      "depNameTemplate": "helm",
-      "versioningTemplate": "semver-coerced",
-      "datasourceTemplate": "custom.helm"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": [
-        "Makefile.variables"
-      ],
-      "matchStrings": [
-        "go_version\\s*=\\s*(?<currentValue>\\S+)"
-      ],
-      "depNameTemplate": "golang",
-      "versioningTemplate": "semver-coerced",
-      "datasourceTemplate": "golang-version"
-    },
-    {
-      "customType": "regex",
+      "datasourceTemplate": "endoflife-date",
+      "depNameTemplate": "alpine",
       "fileMatch": ["Makefile.variables"],
       "matchStrings": ["alpine_version\\s*=\\s*(?<currentValue>\\S+)"],
-      "depNameTemplate": "alpine",
-      "versioningTemplate": "semver-coerced",
-      "datasourceTemplate": "custom.alpine"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["Makefile.variables"],
-      "matchStrings": ["runc_version\\s*=\\s*(?<currentValue>\\S+)"],
-      "depNameTemplate": "runc",
-      "versioningTemplate": "semver",
-      "datasourceTemplate": "github-releases",
-      "packageNameTemplate": "opencontainers/runc"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["Makefile.variables"],
-      "matchStrings": ["containerd_version\\s*=\\s*(?<currentValue>\\S+)"],
-      "depNameTemplate": "containerd",
-      "versioningTemplate": "semver",
-      "datasourceTemplate": "github-releases",
-      "packageNameTemplate": "containerd/containerd"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["Makefile.variables"],
-      "matchStrings": ["etcd_version\\s*=\\s*(?<currentValue>\\S+)"],
-      "depNameTemplate": "etcd",
-      "versioningTemplate": "semver",
-      "datasourceTemplate": "github-releases",
-      "packageNameTemplate": "etcd-io/etcd"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["Makefile.variables"],
-      "matchStrings": ["konnectivity_version\\s*=\\s*(?<currentValue>\\S+)"],
-      "depNameTemplate": "konnectivity",
-      "versioningTemplate": "semver",
-      "datasourceTemplate": "github-releases",
-      "packageNameTemplate": "kubernetes-sigs/apiserver-network-proxy"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["Makefile.variables"],
-      "matchStrings": ["iptables_version\\s*=\\s*(?<currentValue>\\S+)"],
-      "depNameTemplate": "iptables",
-      "versioningTemplate": "loose",
-      "datasourceTemplate": "custom.iptables"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["Makefile.variables"],
-      "matchStrings": ["keepalived_version\\s*=\\s*(?<currentValue>\\S+)"],
-      "depNameTemplate": "keepalived",
-      "versioningTemplate": "semver",
-      "datasourceTemplate": "github-tags",
-      "packageNameTemplate": "acassen/keepalived"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["Makefile.variables"],
-      "matchStrings": ["kine_version\\s*=\\s*(?<currentValue>\\S+)"],
-      "depNameTemplate": "kine",
-      "versioningTemplate": "semver",
-      "datasourceTemplate": "github-releases",
-      "packageNameTemplate": "k3s-io/kine"
+      "packageNameTemplate": "alpine",
+      "versioningTemplate": "semver"
     }
   ],
   "customDatasources": {
-    "kubernetes": {
-      "defaultRegistryUrlTemplate": "https://cdn.dl.k8s.io/release/stable.txt",
-      "format": "plain"
-    },
-    "helm": {
-      "defaultRegistryUrlTemplate": "https://get.helm.sh/helm-latest-version",
-      "format": "plain"
-    },
-    "alpine": {
-      "defaultRegistryUrlTemplate": "https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/x86_64/latest-releases.yaml",
-      "format": "text",
-      "extractVersion": "version:\\s*(?<version>[\\d.]+)"
-    },
-    "iptables": {
-      "defaultRegistryUrlTemplate": "https://ftp.netfilter.org/pub/iptables/?C=M;O=D",
-      "format": "directory",
-      "extractVersion": "iptables-(?<version>[\\d.]+)\\.tar\\.xz"
+    "endoflife-date": {
+      "defaultRegistryUrlTemplate": "https://endoflife.date/api/alpine.json",
+      "format": "json"
     }
   }
 }
